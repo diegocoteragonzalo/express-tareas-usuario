@@ -24,8 +24,32 @@ app.get("/tasks", (req, res) => {
 })
 
 
+app.get("/tasks/:id", (req, res) => {
+	let id = req.params.id
+	let task = tasks.find( (t) => t.id == id )
+	
+	if(task == undefined) {
+		res.send("Error")
+		return
+	}
+	res.send(task)	
+})
+
+
 app.get("/users", (req, res) => {
 	res.send(users)
+})
+
+
+app.get("/users/:id", (req, res) => {
+	let id = req.params.id
+	let user = users.find( (t) => t.id == id )
+	
+	if(user == undefined) {
+		res.send("Error")
+		return
+	}
+	res.send(user)	
 })
 
 
